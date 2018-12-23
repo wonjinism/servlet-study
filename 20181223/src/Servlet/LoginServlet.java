@@ -27,10 +27,17 @@ public class LoginServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
+		resp.setCharacterEncoding("UTF-8"); 
+		resp.setContentType("text/html; charset=UTF-8");
 		if(map.containsKey(id)) {
 			if(map.get(id).equals(pw)) {
-				
+				req.getSession().setAttribute("id", id);
+				resp.sendRedirect("result.jsp");
+			}else {
+				resp.getWriter().print("<html><head></head><script>alert(\"패스워드가 일치하지 않음!\");history.back();</script><body></body></html>");
 			}
+		}else{
+			resp.getWriter().print("<html><head></head><script>alert(\"아이디가 일치하지 않음!\");history.back();</script><body></body></html>");
 		}
 	}
 
