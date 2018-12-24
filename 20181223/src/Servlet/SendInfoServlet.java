@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/sendInfoMore")
+@WebServlet("/sendInfo")
 public class SendInfoServlet extends HttpServlet {
 
 	@Override
@@ -20,8 +20,12 @@ public class SendInfoServlet extends HttpServlet {
 		resp.getWriter().print("<html><head></head><body>");
 		while (e.hasMoreElements()) {
 			String name = (String) e.nextElement();
-			String text = name + ": " + req.getParameter(name) + "<br />";
-			resp.getWriter().println(text);	
+			String[] nameStr = req.getParameterValues(name);
+			resp.getWriter().print(name + ": ");	
+			for (String string : nameStr) {
+				resp.getWriter().print(string + " ");
+			}
+			resp.getWriter().print("<br />");	
 		}
 		resp.getWriter().println("</body></html>");
 	}

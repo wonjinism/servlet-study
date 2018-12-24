@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/select")
-public class TestServlet extends HttpServlet{
+public class SelectServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,5 +26,4 @@ public class TestServlet extends HttpServlet{
 			break;
 		}
 	}
-	
 }
